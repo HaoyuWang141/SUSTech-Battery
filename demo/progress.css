@@ -1,0 +1,69 @@
+/* progress.css */
+body {
+    background-color: #0f0f0f;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#app {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px dashed rgba(180, 175, 175, 0.4);
+    box-sizing: border-box;
+    padding: 40px;
+    box-shadow: 3px 2px 40px rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.container {
+    background-color: #232323;
+    padding: 0 40px;
+    border-radius: 10px;
+    width: 80%;
+}
+
+.progress-title {
+    font-size: 24px;
+    margin: 40px 60px 40px 0;
+}
+
+.progress-container {
+    width: 600px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.results {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.results-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.soh,
+.rul {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.results .chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}

@@ -1,0 +1,154 @@
+/* style.css */
+:root {
+    --color-green: #00d28b;
+    --color-yellow: #ffff00;
+    --color-orange: #ff8000;
+    --color-red: #b00b0b;
+}
+
+body {
+    background-color: #0f0f0f;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#app {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    justify-content: space-between;
+    border: 3px dashed rgba(180, 175, 175, 0.4);
+    box-sizing: border-box;
+    padding: 40px;
+    box-shadow: 3px 2px 40px rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.left-panel,
+.right-panel {
+    background-color: #232323;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.left-panel {
+    width: 35%;
+    margin-right: 30px;
+}
+
+.right-panel {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-panel canvas {
+    background-color: #1a1a1a;
+}
+
+.battery-health-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    margin-bottom: 20px;
+    margin-top: 120px;
+}
+
+.battery-health-container .battery-health-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.battery-health-container .battery-health-score {
+    font-size: 1.5em;
+    color: var(--color-green);
+}
+
+.battery-status {
+    display: flex;
+    flex-direction: column;
+}
+
+.battery-status div {
+    margin: 10px 0;
+}
+
+.status-circle {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.score-icon-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.score-icon-container div {
+    text-align: center;
+}
+
+.score-icon-container .score-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.score-icon-container .score-icon {
+    font-size: 1.3em;
+    color: var(--color-green);
+}
+
+/* map */
+.map-container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 10px;
+    box-sizing: border-box;
+}
+
+.map-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5%;
+}
+
+.img-container-health {
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.img-container-health img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5%;
+}
+
+.img-container-battery {
+    width: 80px;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.img-container-battery img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5%;
+}

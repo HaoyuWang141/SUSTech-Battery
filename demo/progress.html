@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测量中</title>
+    <link rel="stylesheet" href="progress.css">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <div v-if="percentage < 100">
+                <div class="progress-title">测量中请稍后...</div>
+                <div class="progress-container">
+                    <el-progress :text-inside="true" :stroke-width="26" :percentage="percentage"
+                        text-color="white"></el-progress>
+                </div>
+            </div>
+
+            <div v-if="percentage >= 100" class="results">
+                <div style="display: flex;">
+                    <el-button type="primary" onclick="window.location.href='index.html'">返回首页</el-button>
+                </div>
+
+                <div class="results-title">
+                    <div class="soh">当前 SOH：95%</div>
+                    <div class="rul">预计 RUL:{{ predictedRUL }} 天</div>
+                </div>
+
+                <div class="chart-container">
+                    <div id="sohChart" style="width: 500px; height: 300px;"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/vue@2"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                percentage: 0,
+                predictedRUL: 150, // 假设的预测 RUL
+                historicalSOH: [100, 98, 97.5, 96, 96.3, 95.6, 95] // 假设的历史 SOH 数据
+            },
+            mounted() {
+                this.startProgress();
+                this.renderChart();
+            },
+            methods: {
+                startProgress() {
+                    const interval = setInterval(() => {
+                        this.percentage += 1;
+                        if (this.percentage >= 100) {
+                            clearInterval(interval);
+                            this.$nextTick(() => {
+                                this.renderChart();
+                            });
+                        }
+                    }, 20); // 每20毫秒增加1%
+                },
+                renderChart() {
+                    var chartDom = document.getElementById('sohChart');
+                    var myChart = echarts.init(chartDom);
+                    var option = {
+                        title: {
+                            text: 'SOH Curve',
+                            left: 'center',
+                            top: 'bottom',
+                            textStyle: {
+                                color: 'white',
+                                fontSize: 20
+                            }
+                        },
+                        tooltip: {
+                            trigger: 'axis'
+                        },
+                        xAxis: {
+                            type: 'category',
+                            data: ['12月', '1月', '2月', '3月', '4月', '5月', '本月'],
+                            axisLabel: {
+                                color: 'white'
+                            }
+                        },
+                        yAxis: {
+                            type: 'value',
+                            min: 90,
+                            max: 100
+                        },
+                        series: [{
+                            data: this.historicalSOH,
+                            type: 'line',
+                            lineStyle: {
+                                width: 4,
+                            },
+                            smooth: true,
+                            areaStyle: {},
+                            label: {
+                                show: true,
+                                position: 'top',
+                                color: 'white'
+                            }
+                        }]
+                    };
+
+                    myChart.setOption(option);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
